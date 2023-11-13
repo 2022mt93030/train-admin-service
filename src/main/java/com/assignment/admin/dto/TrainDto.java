@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TrainDto {
 	
+	private Long id;
 	private String name;
 	private String frequency;
 	private Long routeNo;

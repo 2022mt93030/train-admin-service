@@ -23,11 +23,11 @@ import org.springframework.kafka.support.serializer.JsonSerializer;
 /**
  * The Class KafkaConsumerConfig.
  */
-//@Configuration
+@Configuration
 public class KafkaConfiguration {
 
 	/** The kafka bootstrap address. */
-	@Value("${eventuatelocal.kafka.bootstrap.servers}")
+	@Value("${kafka.bootstrap.servers}")
 	private String kafkaBootstrapAddress;
 
 	/**

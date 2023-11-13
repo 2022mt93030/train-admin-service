@@ -14,7 +14,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .paths(PathSelectors.ant("/api/**"))
-                .apis(RequestHandlerSelectors.basePackage("com.assignment.booking"))
+                .apis(RequestHandlerSelectors.basePackage("com.assignment.admin"))
                 .build();
     }
 }

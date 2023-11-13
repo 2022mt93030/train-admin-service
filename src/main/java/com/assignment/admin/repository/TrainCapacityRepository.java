@@ -1,5 +1,7 @@
 package com.assignment.admin.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +17,10 @@ public interface TrainCapacityRepository extends JpaRepository<TrainCapacity, Tr
 	@Modifying
 //	@Query("Update TrainCapacity tc Set tc.totalSeats = :seatCnt Where tc.trainNum=:trainId and tc.trainClass=:bogieType")
 	@Query(value = "UPDATE train_capacity SET total_seats = :seatCnt Where train_num=:trainId and travel_class=:bogieType", nativeQuery = true)
-	void updateCapacity(@Param("trainId") Long trainId, @Param("bogieType") String bogieType, @Param("seatCnt") Integer seatCnt);
+	TrainCapacity updateCapacity(@Param("trainId") Long trainId, @Param("bogieType") String bogieType, @Param("seatCnt") Integer seatCnt);
+	
+	@Query(value="SELECT tc FROM TrainCapacity tc where tc.trainNum=:trainId")
+	List<TrainCapacity> getTrainCapacity(@Param("trainId") Long trainId);
 	
 //	@Query("Update TrainCapacity tc Set tc.totalSeats = :seatCnt, tc.date= :travelDate Where tc.train.id=:trainId and tc.id.trainClass=:bogieType")
 //	TrainCapacity updateCapacityForDate(@Param("trainId") Long trainId, @Param("bogieType") String bogieType, @Param("seatCnt") Integer seatCnt, @Param("travelDate") Date travelDate );
